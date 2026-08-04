@@ -1,0 +1,97 @@
+
+
+create database libreria_taquilla;
+
+
+
+use libreria_taquilla;
+
+
+show tables;
+
+create table libros(
+id_libro INT not null  AUTO_INCREMENT PRIMARY KEY,
+titulo varchar(233),
+autor varchar(233),
+genero varchar(233),
+anio double
+);
+
+create table Persona (
+id_persona int not null auto_increment primary key,
+nombre varchar(233),
+apellidos varchar(233),
+correo nvarchar(233)
+
+);
+
+ALTER TABLE libros
+ADD codigo_libro VARCHAR(3) NOT NULL UNIQUE;
+
+
+
+
+CREATE TABLE cliente(
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    id_persona INT NOT NULL,
+    numero_socio VARCHAR(20) NOT NULL UNIQUE,
+
+    CONSTRAINT fk_cliente_persona
+        FOREIGN KEY (id_persona)
+        REFERENCES persona(id_persona)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE bibliotecario(
+    id_bibliotecario INT AUTO_INCREMENT PRIMARY KEY,
+    id_persona INT NOT NULL,
+    numero_empleado VARCHAR(20) NOT NULL UNIQUE,
+
+    CONSTRAINT fk_bibliotecario_persona
+        FOREIGN KEY (id_persona)
+        REFERENCES persona(id_persona)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+
+
+
+
+
+
+CREATE TABLE cliente(
+    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+    id_persona INT NOT NULL,
+    numero_socio VARCHAR(20) NOT NULL UNIQUE,
+
+    CONSTRAINT fk_cliente_persona
+        FOREIGN KEY (id_persona)
+        REFERENCES persona(id_persona)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+DELIMITER //
+
+CREATE PROCEDURE insertar_libro(
+    IN p_titulo VARCHAR(233),
+    IN p_autor VARCHAR(233),
+    IN p_genero VARCHAR(233),
+    IN p_anio DOUBLE
+)
+BEGIN
+
+    INSERT INTO libros(titulo, autor, genero, anio)
+    VALUES(p_titulo, p_autor, p_genero, p_anio);
+
+END //
+
+DELIMITER ;
+
+
