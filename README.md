@@ -6,6 +6,9 @@ El backend permite realizar operaciones CRUD (Crear, Consultar, Actualizar y Eli
 
 ---
 
+La base de datos se encuentra en el proyecto en la carpeta Config 
+
+
 # Tecnologías utilizadas
 
 - Java 17+
