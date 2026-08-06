@@ -25,12 +25,16 @@ correo nvarchar(233)
 
 );
 
-ALTER TABLE libros
+ALTER TABLE libros 
 ADD codigo_libro VARCHAR(3) NOT NULL UNIQUE;
 
+ALTER TABLE libros
+ADD imagen blob;
 
 
+select * from libros;
 
+select * from libros;
 CREATE TABLE cliente(
     id_cliente INT AUTO_INCREMENT PRIMARY KEY,
     id_persona INT NOT NULL,
